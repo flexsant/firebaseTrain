@@ -16,10 +16,10 @@ var firebaseConfig = {
     event.preventDefault();
 //get values from your form 4 values one for every input
     var trainName = $("#train-name-input").val().trim();
-    var destination = $("#destination-name-input").val().trim();
+    var destination = $("#destination-input").val().trim();
     console.log(destination);
-    var firstTrainTime = $("firsttraintime-name-input").val().trim();
-    var frequency = $("#frequency-name-inpit").val().trim();
+    var firstTrainTime = $("#firsttraintime-name-input").val().trim();
+    var frequency = $("#frequency-name-input").val().trim();
 
 //create an object with all your new trains info so every value you pull up above
 newTrain = {
@@ -38,7 +38,7 @@ newTrain = {
  alert("New Train succesfully added");
 
  $("#train-name-input").val("");
- $("#destination-name-input").val("");
+ $("#destination-input").val("");
  $("#firsttraintime-name-input").val("");
  $("#frequency-name-input").val("");
   });
