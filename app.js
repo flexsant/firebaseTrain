@@ -28,13 +28,45 @@ newTrain = {
     fTrain: firstTrainTime,
     freq: frequency,
 }
-// Uploads employee data to the database
+// Uploads train data to the database
  database.ref().push(newTrain);
-  })
+
+ console.log(newTrain.tName);
+ console.log(newTrain.dest);
+ console.log(newTrain.freq);
+
+ alert("New Train succesfully added");
+
+ $("#train-name-input").val("");
+ $("#destination-name-input").val("");
+ $("#firsttraintime-name-input").val("");
+ $("#frequency-name-input").val("");
+  });
 // fuction to run when child is added to grab a snapshot from the database and append it to your table.  Use the timesheet activity as an example
-//for your math you will want to use Train predictions activity.  
-Collapse
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+// Store into a variable
+    var trainName = childSnapshot.val().name;
+    var destination = childSnapshot.val().name;
+    var firstTrainTime = childSnapshot.val().name;
+    var frequency = childSnapshot.val().name;
+
+    console.log(trainName);
+    console.log(destination);
+    console.log(firstTrainTime);
+    console.log(frequency);
 
 
 
 
+
+
+//for your math you will want to use Train predictions activity. 
+
+
+
+
+
+
+
+}
