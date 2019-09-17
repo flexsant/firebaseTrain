@@ -17,6 +17,7 @@ var firebaseConfig = {
 //get values from your form 4 values one for every input
     var trainName = $("#train-name-input").val().trim();
     var destination = $("#destination-name-input").val().trim();
+    console.log(destination);
     var firstTrainTime = $("firsttraintime-name-input").val().trim();
     var frequency = $("#frequency-name-inpit").val().trim();
 
