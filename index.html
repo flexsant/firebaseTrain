@@ -10,11 +10,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Train Schedule</title>
-</head>
-
-<body>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -26,53 +21,104 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <!--  Add moment.js-->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <!-- Add Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
 
-    <br>
+    <title>Train Schedule</title>
+</head>
 
-    <div class="jumbotron jumbotron-fluid text-center" style="background-color: lightcoral">
+<body>
+
         <div class="container">
-            <h1 class="display-4">Train Schedule</h1>
-
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            Current Train Schedule
-        </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            Add Train
-        </div>
-        <div class="card-body">
-
-            <form>
-                <div class="form-group">
-                    <label for="formGroupExampleInput">Example label</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                <!-- Jumbotron -->
+                <div class="jumbotron" style="background-color:lightcoral; color: white">
+                  <h1 class="text-center">Train Scheduler</h1>
+                  <h3 class="text-center"></h3>
                 </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput2">Another label</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+          ​
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- Current Employees-->
+                    <div class="card mb-4">
+                      <div class="card-header">Current Train Schedule</div>
+                      <div class="card-body">
+                        <table class="table table-sm table-hover" id="train-table">
+                          <thead>
+                            <tr>
+                              <th scope="col">Train Name</th>
+                              <th scope="col">Destinaton</th>
+                              <th scope="col">Frequency</th>
+                              <th scope="col">Next Arrival</th>
+                              <th scope="col">Minutes</th>
+                            </tr>
+                          </thead>
+                          <tbody></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </form>
-
-        </div>
-    </div>
-</body>
-
-</html>
+          ​
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- Add Train  -->
+                    <div class="card mb-4">
+                      <div class="card-header">Add Train</div>
+                      <div class="card-body">
+                        <!-- Entry Form -->
+                        <form>
+                          <div class="form-group">
+                            <label for="train-name-input">Train Name</label>
+                            <input
+                              class="form-control"
+                              id="train-name-input"
+                              placeholder="LA Express"
+                              type="text"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="destination-input">Destination</label>
+                            <input
+                              class="form-control"
+                              id="destination-input"
+                              placeholder="Los Angeles"
+                              type="text"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="first-train-input"
+                              >First Train Time (HH:mm)</label
+                            >
+                            <input
+                              class="form-control"
+                              id="first-train-input"
+                              placeholder="14:00"
+                              type="text"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label for="frequency-input">Frequency (min)</label>
+                            <input
+                              class="form-control"
+                              id="frequency-input"
+                              placeholder="20"
+                              type="text"
+                            />
+                          </div>
+                          <button class="btn btn-primary float-right" id="add-train-btn">
+                            Submit
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- JavaScript -->
+              <script src="app.js"></script>
+            </body>
+          </html>
+         
+          
