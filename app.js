@@ -1,4 +1,3 @@
-configuration
 var firebaseConfig = {
     apiKey: "AIzaSyCN9CMRqr_38FdS0gvYDzUXUfbeqphCneM",
     authDomain: "trainapp-bbf6f.firebaseapp.com",
@@ -42,7 +41,7 @@ newTrain = {
  $("#firsttraintime-name-input").val("");
  $("#frequency-name-input").val("");
   });
-// fuction to run when child is added to grab a snapshot from the database and append it to your table.  Use the timesheet activity as an example
+// function to run when child is added to grab a snapshot from the database and append it to your table. 
 database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 // Store into a variable
@@ -55,18 +54,5 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(destination);
     console.log(firstTrainTime);
     console.log(frequency);
-
-
-
-
-
-
 //for your math you will want to use Train predictions activity. 
-
-
-
-
-
-
-
-}
+})
