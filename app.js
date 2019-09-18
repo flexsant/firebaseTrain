@@ -54,10 +54,24 @@ database.ref().on("child_added", function (childSnapshot) {
   var destination = childSnapshot.val().name;
   var firstTrainTime = childSnapshot.val().name;
   var frequency = childSnapshot.val().name;
+  var currentTime = childSnapshot.val().name;
 
   console.log(trainName);
   console.log(destination);
   console.log(firstTrainTime);
   console.log(frequency);
+  console.log(currentTime);
+  
+  var newRow = $("<tr>").append(
+    $("<td>").text(trainName),
+    $("<td>").text(destination),
+    $("<td>").text(firstTrainTime),
+    $("<td>").text(frequency),
+    $("<td>").text(currentTime),
+  );
+
+  // Append the new row to the table
+  $("#train-table > tbody").append(newRow);
+  $("#current-time").html("<h2>" + " " + currentTime + " " + "</h2>");
 
 })
