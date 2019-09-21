@@ -50,28 +50,51 @@ $("#add-train-btn").on("click", function (event) {
 database.ref().on("child_added", function (childSnapshot) {
   console.log(childSnapshot.val());
   // Store into a variable
-  var trainName = childSnapshot.val().name;
-  var destination = childSnapshot.val().name;
-  var firstTrainTime = childSnapshot.val().name;
-  var frequency = childSnapshot.val().name;
-  var currentTime = childSnapshot.val().name;
+  var trainName = childSnapshot.val().tName;
+  var destination = childSnapshot.val().dest;
+  var firstTime = childSnapshot.val().fTrain;
+  var tFrequency = childSnapshot.val().freq;
+
+  var firstTimeConverted = moment(firstTime, "HH:mm").subtract(1, "years");
+  console.log(firstTimeConverted);
+
+  // Current Time
+  var currentTime = moment();
+  console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
+
+  // Difference between the times
+  var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+  console.log("DIFFERENCE IN TIME: " + diffTime);
+
+  // Time apart (remainder)
+  var tRemainder = diffTime % tFrequency;
+  console.log(tRemainder);
+
+  // Minute Until Train
+  var tMinutesTillTrain = tFrequency - tRemainder;
+  console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
+
+  // Next Train
+  var nextTrain = moment().add(tMinutesTillTrain, "minutes");
+  console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
+
 
   console.log(trainName);
   console.log(destination);
-  console.log(firstTrainTime);
-  console.log(frequency);
+  console.log(firstTime);
+  console.log(tFrequency);
   console.log(currentTime);
-  
+ 
   var newRow = $("<tr>").append(
     $("<td>").text(trainName),
     $("<td>").text(destination),
-    $("<td>").text(firstTrainTime),
-    $("<td>").text(frequency),
-    $("<td>").text(currentTime),
+    $("<td>").text(tFrequency),
+    $("<td>").text(moment(nextTrain).format("hh:mm")),
+    $("<td>").text(tMinutesTillTrain),
   );
 
   // Append the new row to the table
   $("#train-table > tbody").append(newRow);
-  $("#current-time").html("<h2>" + " " + currentTime + " " + "</h2>");
+  $("#current-time").html("<h2>" + " " + moment(nextTrain).format("hh:mm") + " " + "</h2>");
 
 })

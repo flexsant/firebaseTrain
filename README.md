@@ -1,7 +1,7 @@
 # firebaseTrain
 
 ## Screen Shot
-<img src="screenshot.png" alt="screenshot">
+![Image](/screenshot.png)
 
 ## Technologies Used
 - HTML - used to create elements on the DOM
